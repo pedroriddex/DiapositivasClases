@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "slideTemplate": "index",
+    "title": "Índice de JavaScript",
+    "indexLinks": [
+      {
+        "id": 1,
+        "title": "¿Qué es JavaScript?",
+        "url": "#slide-2"
+      },
+      {
+        "id": 2,
+        "title": "Conectar JS al HTML",
+        "url": "#slide-3"
+      },
+      {
+        "id": 3,
+        "title": "Diferencia entre defer y async",
+        "url": "#slide-4"
+      }
+    ]
+  }
+]
