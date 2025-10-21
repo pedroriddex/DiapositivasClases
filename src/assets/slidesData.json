@@ -6,8 +6,8 @@
     "indexLinks": [
       {
         "id": 1,
-        "title": "¿Qué es JavaScript?",
-        "url": "#slide-2"
+        "title": "Test",
+        "url": "2"
       },
       {
         "id": 2,
@@ -18,6 +18,18 @@
         "id": 3,
         "title": "Diferencia entre defer y async",
         "url": "#slide-4"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slideTemplate": "index",
+    "title": "¿Que quieres hacer?",
+    "indexLinks": [
+      {
+        "id": 1,
+        "title": "Volver al inicio",
+        "url": "1"
       }
     ]
   }
