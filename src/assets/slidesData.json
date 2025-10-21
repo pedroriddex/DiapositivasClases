@@ -1,35 +1,61 @@
 [
   {
+    "id": 0,
+    "slideTemplate": "cover",
+    "title": "JavaScript",
+    "subtitle": "Súper archivo-guía.",
+    "nextId": "1"
+  },
+  {
     "id": 1,
     "slideTemplate": "index",
     "title": "Índice de JavaScript",
     "indexLinks": [
       {
         "id": 1,
-        "title": "Test",
-        "url": "2"
+        "title": "Iniciando con JavaScript",
+        "url": "2",
+        "icon": "ri-emotion-laugh-line"
       },
       {
         "id": 2,
-        "title": "Conectar JS al HTML",
-        "url": "#slide-3"
+        "title": "Índice de estudio",
+        "url": "#slide-3",
+        "icon": "ri-graduation-cap-line"
       },
       {
         "id": 3,
-        "title": "Diferencia entre defer y async",
-        "url": "#slide-4"
+        "title": "Pruebas y ejercicios",
+        "url": "#slide-4",
+        "icon": "ri-test-tube-line"
       }
     ]
   },
   {
     "id": 2,
+    "slideTemplate": "Text",
+    "title": "Iniciando con JavaScript",
+    "contentIcon": "ri-links-line",
+    "contentTitle": "Conectando index.js",
+    "contentText": "Antes de empezar a escribir en JavaScript, debemos saber cómo conectar nuestro archivo index.js al archivo HTML de nuestro proyecto, ya que existen diversas maneras de realizar esta acción vemos cómo funcionan y sus diferencias.",
+    "nextId": "3"
+  },
+  {
+    "id": 3,
     "slideTemplate": "index",
-    "title": "¿Que quieres hacer?",
+    "title": "Iniciando con JavaScript",
     "indexLinks": [
       {
         "id": 1,
-        "title": "Volver al inicio",
-        "url": "1"
+        "title": "Inline en HTML",
+        "url": "4",
+        "icon": "ri-code-line"
+      },
+      {
+        "id": 2,
+        "title": "Archivo externo",
+        "url": "1",
+        "icon": "ri-file-code-line"
       }
     ]
   }
