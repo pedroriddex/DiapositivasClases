@@ -5,22 +5,22 @@
 }
 
 :root {
-    --color-primary: #FF2D55;
-    --color-secondary: #535bf2;
-    --color-tertiary: #eca83b;
-    --color-text: #242424;
-    --color-bg-primary: #F1F1F1;
-    --color-bg-primary-hover: #f0e5e5;
+  --color-primary: #FF2D55;
+  --color-secondary: #535bf2;
+  --color-tertiary: #eca83b;
+  --color-text: #242424;
+  --color-bg-primary: #F1F1F1;
+  --color-bg-primary-hover: #f0e5e5;
 
-    --font-size: 16px;
-    --font-family: 'Inter', sans-serif;
+  --font-size: 16px;
+  --font-family: 'Inter', sans-serif;
 
-    --border-radius: 8px;
-    --shadow: 0px 16px 32px -4px #ece1e1;
+  --border-radius: 8px;
+  --shadow: 0px 16px 32px -4px #ece1e1;
 
-    --small-gap: 10px;
-    --medium-gap: 20px;
-    --large-gap: 40px;
+  --small-gap: 10px;
+  --medium-gap: 20px;
+  --large-gap: 40px;
 }
 
 @keyframes appear {
@@ -28,9 +28,22 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+@keyframes disapear {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
   }
 }
 
@@ -41,6 +54,9 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  /* Prevenir scroll durante transiciones */
+  position: relative;
 
   font-family: var(--font-family);
 }
@@ -53,6 +69,11 @@ main {
   gap: var(--medium-gap);
   width: 100vw;
   padding: 16px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 
   & .link--go-back {
     flex-grow: 1;
@@ -83,7 +104,7 @@ main {
 
     text-align: center;
 
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 
   & .header__logo {
@@ -101,15 +122,24 @@ main {
 }
 
 .slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-h1, h2 {
+/* Durante la animación de desaparición, posicionar absolutamente para evitar scroll */
+.slide.animate-disapear {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+h1,
+h2 {
   color: var(--color-primary);
   font-weight: 400;
 }
@@ -120,56 +150,57 @@ h1, h2 {
 }
 
 .slide__cover {
-    gap: var(--small-gap);
+  gap: var(--small-gap);
 
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
+
 .slide__index {
 
-    & h2 {
-      position: absolute;
-      top: 1em;
-    }
+  & h2 {
+    position: absolute;
+    top: 1em;
+  }
 
-    & ul {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--small-gap);
-      width: 100%;
-      max-width: 300px;
+  & ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--small-gap);
+    width: 100%;
+    max-width: 300px;
 
-      & li {
-        list-style: none;
+    & li {
+      list-style: none;
 
-        & a {
-            color: var(--color-text);
-            text-decoration: none;
-            background-color: var(--color-bg-primary);
-            padding: 16px 16px;
-            border-radius: var(--border-radius);
+      & a {
+        color: var(--color-text);
+        text-decoration: none;
+        background-color: var(--color-bg-primary);
+        padding: 16px 16px;
+        border-radius: var(--border-radius);
 
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: var(--small-gap);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: var(--small-gap);
 
-            transition: .2s;
+        transition: .2s;
 
-            &:hover {
-              background-color: var(--color-bg-primary-hover);
-              transform: scale(1.03);
-            }
+        &:hover {
+          background-color: var(--color-bg-primary-hover);
+          transform: scale(1.03);
+        }
 
-            & i {
-              font-size: 1.2em;
-              color: var(--color-primary);
-            }
+        & i {
+          font-size: 1.2em;
+          color: var(--color-primary);
         }
       }
     }
+  }
 }
 
 .slide__text .content {
@@ -226,7 +257,7 @@ h1, h2 {
 
       padding: 4px 8px;
       border-radius: 4px;
-      
+
       &.language-JavaScript {
         background-color: var(--color-primary);
       }
@@ -240,20 +271,81 @@ h1, h2 {
       }
     }
   }
+
+  & .content__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: var(--small-gap);
+
+    & a {
+      color: var(--color-text);
+      text-decoration: none;
+      background-color: var(--color-bg-primary);
+      padding: 10px 10px;
+      border-radius: var(--border-radius);
+
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: var(--small-gap);
+      border: solid 1px transparent;
+      transition: .2s;
+
+      &:hover {
+        border: solid 1px black;
+      }
+    }
+
+  }
 }
 
 .animate-appear {
-    animation: appear 0.6s ease-out forwards;
-    opacity: 0;
+  animation: appear 0.5s ease-out forwards;
+  opacity: 0;
 }
 
-.animate-delay-1 { animation-delay: 0.1s; }
-.animate-delay-2 { animation-delay: 0.2s; }
-.animate-delay-3 { animation-delay: 0.3s; }
-.animate-delay-4 { animation-delay: 0.4s; }
-.animate-delay-5 { animation-delay: 0.5s; }
-.animate-delay-6 { animation-delay: 0.6s; }
-.animate-delay-7 { animation-delay: 0.7s; }
-.animate-delay-8 { animation-delay: 0.8s; }
-.animate-delay-9 { animation-delay: 0.9s; }
-.animate-delay-10 { animation-delay: 1.0s; }
+.animate-disapear {
+  animation: disapear 0.1s ease-out forwards;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-6 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-7 {
+  animation-delay: 0.7s;
+}
+
+.animate-delay-8 {
+  animation-delay: 0.8s;
+}
+
+.animate-delay-9 {
+  animation-delay: 0.9s;
+}
+
+.animate-delay-10 {
+  animation-delay: 1.0s;
+}
